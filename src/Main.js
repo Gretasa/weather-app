@@ -11,7 +11,7 @@ export default class App extends Component {
           path="/"
           render={() => (
             <div className="App">
-              <Weather city="lisbon" />
+              <Weather city="Lisbon" />
             </div>
           )}
         />
