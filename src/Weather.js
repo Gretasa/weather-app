@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import "./Weather.css";
-import WeatherIcon from "./WeatherIcon";
+import WeatherIcon from "./Weathericon";
 import CurrentLocation from "./CurrentLocation";
+import Forecast from "./Forecast";
 import Search from "./Search";
 import DateUtil from "./DateUtil";
 import Api from "./Api";
@@ -94,6 +95,7 @@ export default class Weather extends Component {
               </div>
             </div>
           </div>
+          <Forecast city={this.state.city} />
         </div>
       );
     } else {

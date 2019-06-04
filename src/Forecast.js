@@ -3,7 +3,7 @@ import axios from "axios";
 import Api from "./Api";
 import DateUtil from "./DateUtil";
 import "./Forecast.css";
-import WeatherIcon from "./WeatherIcon";
+import WeatherIcon from "./Weathericon";
 
 export default class Forecast extends Component {
   state = {
