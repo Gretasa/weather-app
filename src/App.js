@@ -1,14 +1,15 @@
-import React from "react";
-import "./App.css";
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.css";
+import Navigation from "./Navigation";
+import Main from "./Main";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>Halo!</p>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        <Navigation />
+        <Main />
+      </div>
+    );
+  }
 }
-
-export default App;
