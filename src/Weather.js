@@ -94,7 +94,6 @@ export default class Weather extends Component {
               </div>
             </div>
           </div>
-          <Forecast city={this.state.city} />
         </div>
       );
     } else {
