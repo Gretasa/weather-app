@@ -34,12 +34,14 @@ export default class App extends Component {
           path="/munich"
           render={() => (
             <div className="App">
-              <span>
-                Servus, Minga! Komm vorbei und genieß die Zeit. Munich is the
-                capital and most populous city of Bavaria, the second most
-                populous German federal state.
-              </span>
-              <Weather city="Munich" />
+              <ul className="favoriteCitiesDescription">
+                <li>
+                  Servus, Minga! Komm vorbei und genieß die Zeit. Munich is the
+                  capital and most populous city of Bavaria, the second most
+                  populous German federal state.
+                </li>
+                <Weather city="Munich" />
+              </ul>
             </div>
           )}
         />

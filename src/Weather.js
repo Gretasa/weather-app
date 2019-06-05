@@ -70,11 +70,10 @@ export default class Weather extends Component {
                 {this.state.weather.description}
               </div>
             </div>
-
             <div className="row">
               <div className="col-sm-6">
                 <div className="clearfix">
-                  <div className="float-left weather-icon">
+                  <div className="float-right weather-icon">
                     <WeatherIcon iconName={this.state.weather.icon} />
                   </div>
                   <div className="weather-temp weather-temp--today">
@@ -85,13 +84,13 @@ export default class Weather extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6">
-                <div className="weather-detail__text">
-                  Precipitation: {this.state.weather.precipitation}
-                </div>
-                <div className="weather-detail__text">
-                  Wind: {this.state.weather.wind}
-                </div>
+            </div>
+            <div className="col-sm-6">
+              <div className="weather-detail__text">
+                Precipitation: {this.state.weather.precipitation}
+              </div>
+              <div className="weather-detail__text">
+                Wind: {this.state.weather.wind}
               </div>
             </div>
           </div>
