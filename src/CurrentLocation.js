@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 
 export default class CurrentLocation extends Component {
@@ -12,11 +13,8 @@ export default class CurrentLocation extends Component {
 
   render() {
     return (
-      <button
-        className="float-left btn btn-success"
-        onClick={event => this._click(event)}
-      >
-        My current location
+      <button className="button" onClick={event => this.currentLocation(event)}>
+        <FontAwesomeIcon icon="map-marker-alt" />
       </button>
     );
   }
