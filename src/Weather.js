@@ -7,6 +7,7 @@ import CurrentLocation from "./CurrentLocation";
 import Forecast from "./Forecast";
 import Search from "./Search";
 import DateUtil from "./DateUtil";
+import SunGirl from "./sunandgirl.svg";
 import Api from "./Api";
 
 export default class Weather extends Component {
@@ -59,6 +60,7 @@ export default class Weather extends Component {
               refresh={this.refreshWeatherFromLatitudeAndLongitude}
             />
           </div>
+          <img src="./sunandgirl.svg" />
 
           <div className="weather-summary">
             <div className="weather-summary-header">
