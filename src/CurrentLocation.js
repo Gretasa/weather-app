@@ -13,7 +13,7 @@ export default class CurrentLocation extends Component {
 
   render() {
     return (
-      <button className="button" onClick={event => this.currentLocation(event)}>
+      <button className="button" onClick={event => this._click(event)}>
         <FontAwesomeIcon icon="map-marker-alt" />
       </button>
     );

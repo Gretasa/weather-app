@@ -66,8 +66,8 @@ input[type="text"] {
 
 .weather__icon--today {
   float: left;
-  height: 64px;
-  width: 64px;
+  height: 50px;
+  width: 50px;
 }
 
 .weather-unit__text--today {
@@ -79,7 +79,7 @@ input[type="text"] {
 
 .weather-unit__text-separator {
   float: left;
-  font-size: 16px;
+  font-size: 50px;
   line-height: 1.5;
   padding: 0 5px;
 }
@@ -87,7 +87,7 @@ input[type="text"] {
 .weather-temp--today {
   color: #333;
   float: left;
-  font-size: 64px;
+  font-size: 60px;
   font-weight: 400;
   line-height: 1;
   padding-left: 10px;
@@ -172,4 +172,12 @@ input[type="text"] {
 }
 ul {
   list-style: none;
+}
+.container {
+  background-image: linear-gradient(to bottom, #243949 0%, #517fa4 100%);
+  border-radius: 10px;
+  box-shadow: 0 7px 7px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.2);
+  margin-top: 5%;
+  max-width: 430px;
+  padding: 30px;
 }
