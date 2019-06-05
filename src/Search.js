@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class Search extends Component {
   constructor(props) {
@@ -28,7 +29,9 @@ export default class Search extends Component {
           onChange={event => this._handleChange(event)}
           value={this.state.value}
         />
-        <input type="submit" value="Search" className="btn btn-primary" />
+        <button className="button" type="submit">
+          <FontAwesomeIcon icon="search" />
+        </button>
       </form>
     );
   }

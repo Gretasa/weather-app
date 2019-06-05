@@ -1,111 +1,128 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import axios from "axios";
 import "./Weather.css";
-import WeatherIcon from "./Weathericon";
-import CurrentLocation from "./CurrentLocation";
-import Forecast from "./Forecast";
-import Search from "./Search";
-import DateUtil from "./DateUtil";
-import SunGirl from "./sunandgirl.svg";
 import Api from "./Api";
+import Search from "./Search";
+import DateUtility from "./DateUtil";
+import WeatherIcon from "./Weathericon";
+import Forecast from "./Forecast";
+import CurrentLocation from "./CurrentLocation";
 
 export default class Weather extends Component {
-  static propTypes = {
-    city: PropTypes.string.isRequired
-  };
-
-  state = {
-    city: this.props.city
-  };
-
-  componentWillMount() {
-    this.refresh(this.state.city);
+  constructor(props) {
+    super(props);
+    this.state = {
+      city: this.props.city
+    };
   }
 
-  refreshWeatherFromParams(params) {
-    let url = `${Api.url}/data/2.5/weather?appid=${
-      Api.key
-    }&units=metric&${params}`;
-    axios.get(url).then(response => {
+  componentDidMount = () => {
+    if (this.state.city) {
+      this.search(this.state.city);
+    }
+  };
+
+  search = city => {
+    let url = `${Api.url}/weather?q=${city}&appid=${
+      Api.weatherApiKey
+    }&units=metric`;
+
+    axios.get(`${url}`).then(response => {
+      let date = new Date(response.data.dt * 1000);
       this.setState({
         city: response.data.name,
-        weather: {
-          description: response.data.weather[0].main,
-          icon: response.data.weather[0].icon,
-          precipitation: Math.round(response.data.main.humidity) + "%",
-          temperature: Math.round(response.data.main.temp),
-          time: new DateUtil(new Date(response.data.dt * 1000)).dayTime(),
-          wind: Math.round(response.data.wind.speed) + "km/h"
-        }
+        //date: this.formatDate(new Date(response.data.dt * 1000)),
+        date: new DateUtility(date).fullDate(),
+        temperature: `${Math.round(response.data.main.temp)}°`,
+        icon: response.data.weather[0].icon,
+        iconDescription: response.data.weather[0].main,
+        wind: response.data.wind.speed,
+        humidity: response.data.main.humidity,
+        pressure: response.data.main.pressure
       });
     });
-  }
-
-  refreshWeatherFromLatitudeAndLongitude = (latitude, longitude) => {
-    this.refreshWeatherFromParams(`lat=${latitude}&lon=${longitude}`);
   };
 
-  refresh = city => {
-    this.refreshWeatherFromParams(`q=${city}`);
+  currentLocation = (latitude, longitude) => {
+    this.refresh(
+      `${Api.url}/weather?lat=${latitude}&lon=${longitude}&appid=${
+        Api.weatherApiKey
+      }&units=metric`
+    );
+  };
+
+  refresh = url => {
+    axios.get(url).then(response => {
+      this.setState({
+        searching: false,
+        city: response.data.name
+      });
+    });
   };
 
   render() {
-    if (this.state.weather) {
-      return (
-        <div>
-          <div className="clearfix">
-            <Search refresh={this.refresh} />
-            <CurrentLocation
-              refresh={this.refreshWeatherFromLatitudeAndLongitude}
-            />
+    return (
+      <div>
+        <div className="container">
+          <div className="search-bar">
+            <Search handleSearch={this.search} />
+            <CurrentLocation refresh={this.currentLocation} />
           </div>
-          <img src="./sunandgirl.svg" />
+          <div className="weather-location">
+            <h1>{this.state.city}</h1>
+          </div>
+          <div className="date">
+            <p>{this.state.date}</p>
+          </div>
 
-          <div className="weather-summary">
-            <div className="weather-summary-header">
-              <h1>{this.state.city}</h1>
-              <div className="weather-detail__text">
-                {this.state.weather.time}
-              </div>
-              <div className="weather-detail__text">
-                {this.state.weather.description}
+          <div className="row">
+            <div className="col-sm-7">
+              <div className="weather-info">
+                <h2 className="temperture">{this.state.temperature}</h2>
+                <div className="icon-and-description">
+                  <div className="weather-icon">
+                    <WeatherIcon code={this.state.icon} />
+                  </div>
+                  <div className="icon-description">
+                    {this.state.iconDescription}
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="row">
-              <div className="col-sm-6">
-                <div className="clearfix">
-                  <div className="float-left weather-icon">
-                    <WeatherIcon iconName={this.state.weather.icon} />
+            <div className="col-sm-5">
+              <ul className="weather-details list-group">
+                <li className="weather-wind weather-detail-item">
+                  Wind
+                  <div className="wind-km-h">
+                    <span>{this.state.wind}</span>
+                    m/s
                   </div>
-                  <div className="weather-temp weather-temp--today">
-                    {this.state.weather.temperature}
+                </li>
+                <li className="weather-humidity weather-detail-item">
+                  Humidity
+                  <div className="humidity-percentage">
+                    <span>{this.state.humidity}</span>%
                   </div>
-                  <div className="weather-unit__text weather-unit__text--today">
-                    °C
+                </li>
+                <li className="weather-humidity weather-detail-item">
+                  Pressure
+                  <div className="humidity-percentage">
+                    <span>{this.state.pressure}</span>
+                    hPa
                   </div>
-                </div>
-              </div>
-              <div className="col-sm-4">
-                <div className="weather-detail__text">
-                  Precipitation: {this.state.weather.precipitation}
-                </div>
-                <div className="weather-detail__text">
-                  Wind: {this.state.weather.wind}
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
           </div>
+
+          <div className="weather-division">
+            <hr />
+          </div>
+
           <Forecast city={this.state.city} />
         </div>
-      );
-    } else {
-      return (
-        <div>
-          App is loading, <em>please wait...</em>
-        </div>
-      );
-    }
+      </div>
+    );
   }
 }
