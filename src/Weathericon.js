@@ -1,38 +1,33 @@
 import React, { Component } from "react";
-import ReactAnimatedWeather from "react-animated-weather";
-import PropTypes from "prop-types";
 
 export default class WeatherIcon extends Component {
-  static propTypes = {
-    iconName: PropTypes.string.isRequired
+  animatedIconName = {
+    "01d": "day",
+    "01n": "night",
+    "02d": "cloudy-day",
+    "02n": "cloudy-night",
+    "03d": "cloudy",
+    "03n": "cloudy",
+    "04d": "cloudy",
+    "04n": "cloudy",
+    "09d": "rainy-1",
+    "09n": "rainy-2",
+    "10d": "rainy-3",
+    "10n": "rainy-3",
+    "11d": "thunder",
+    "11n": "thunder",
+    "13d": "snowy",
+    "13n": "snowy",
+    "50d": "cloudy",
+    "50n": "cloudy"
   };
-  iconMatching = {
-    "01d": "CLEAR_DAY",
-    "01n": "CLEAR_NIGHT",
-    "02d": "PARTLY_CLOUDY_DAY",
-    "02n": "PARTLY_CLOUDY_NIGHT",
-    "03d": "CLOUDY",
-    "03n": "CLOUDY",
-    "04d": "CLOUDY",
-    "04n": "CLOUDY",
-    "09d": "RAIN",
-    "09n": "RAIN",
-    "10d": "RAIN",
-    "10n": "RAIN",
-    "11d": "SLEET",
-    "11n": "SLEET",
-    "13d": "SNOW",
-    "13n": "SNOW",
-    "50d": "FOG",
-    "50n": "FOG"
-  };
+
   render() {
     return (
-      <ReactAnimatedWeather
-        icon={this.iconMatching[this.props.iconName]}
-        color="#000"
-        size={38}
-        animate={true}
+      <img
+        className="weather-icon"
+        src={`/icons/${this.animatedIconName[this.props.code]}.svg`}
+        alt=""
       />
     );
   }

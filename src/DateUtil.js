@@ -1,10 +1,10 @@
-export default class DateUtility {
+export default class DateUtil {
   constructor(date) {
     this.date = date;
   }
 
-  weekDay() {
-    let weekDays = [
+  day(short = false) {
+    let days = [
       "Sunday",
       "Monday",
       "Tuesday",
@@ -13,39 +13,22 @@ export default class DateUtility {
       "Friday",
       "Saturday"
     ];
-    return weekDays[this.date.getDay()];
+
+    if (short) {
+      return days[this.date.getDay()].substring(0, 3);
+    } else {
+      return days[this.date.getDay()];
+    }
   }
 
-  day() {
-    return this.date.getDate();
+  time() {
+    let minutes = this.date.getMinutes();
+    if (minutes < 10) minutes = `${0}minutes`;
+
+    return `${this.date.getHours()}:${minutes}`;
   }
 
-  month() {
-    let months = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec"
-    ];
-    return months[this.date.getMonth()];
-  }
-
-  year() {
-    return this.date.getFullYear();
-  }
-
-  fullDate() {
-    return `${this.weekDay()}, 
-                ${this.day()} 
-                ${this.month()} 
-                ${this.year()}`;
+  dayTime() {
+    return `${this.day()} ${this.time()}`;
   }
 }

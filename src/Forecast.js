@@ -50,7 +50,7 @@ export default class Forecast extends Component {
               <div className="col-sm-2" key={index}>
                 <div className="forecast-day">{weather.day}</div>
                 <div className="forecast-icon">
-                  <WeatherIcon iconName={weather.icon} />
+                  <WeatherIcon code={weather.icon} />
                 </div>
                 <div className="forecast-temperature">
                   {weather.temperature}°

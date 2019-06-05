@@ -1,8 +1,11 @@
-<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+@import url("https://fonts.googleapis.com/css?family=Poppins&display=swap"rel="stylesheet");
 
 body {
   font-family: "Poppins", sans-serif;
-  background-image: "./beach.JPG";
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  margin: 20px auto;
+  max-width: 630px;
+  padding: 20px 16px 24px 16px;
 }
 
 h1 {
@@ -23,7 +26,7 @@ input[type="text"] {
   border-radius: 2px;
   border: none;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-  height: 44px;
+  height: 30px;
   outline: 0;
   padding: 10px;
   width: 300px;
@@ -32,7 +35,7 @@ input[type="text"] {
 .btn {
   border-radius: 2px;
   color: #fff;
-  height: 44px;
+  height: 30px;
 }
 
 .weather-icon {
@@ -41,10 +44,6 @@ input[type="text"] {
 
 .weather-summary {
   padding: 20px 0;
-}
-
-.weather-summary-header {
-  padding-bottom: 20px;
 }
 
 .weather-detail__text {
@@ -170,4 +169,7 @@ input[type="text"] {
   background-color: #fcfcfc;
   border-radius: 1px;
   border: 1px solid #e9e9e9;
+}
+ul {
+  list-style: none;
 }
