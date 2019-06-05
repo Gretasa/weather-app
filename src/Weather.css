@@ -173,11 +173,3 @@ input[type="text"] {
 ul {
   list-style: none;
 }
-.container {
-  background-image: linear-gradient(to bottom, #243949 0%, #517fa4 100%);
-  border-radius: 10px;
-  box-shadow: 0 7px 7px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.2);
-  margin-top: 5%;
-  max-width: 430px;
-  padding: 30px;
-}
