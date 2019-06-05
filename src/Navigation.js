@@ -7,7 +7,7 @@ export default class Navigation extends Component {
     return (
       <header>
         <h1>Travel + Weather + Sun + Sea</h1>
-        <br />
+        <br/>
         <ul className="navigation-items">
           <li className="navigation-item">
             <Link to="/">Sun & Sea</Link>
