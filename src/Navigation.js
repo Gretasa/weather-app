@@ -6,18 +6,17 @@ export default class Navigation extends Component {
   render() {
     return (
       <header>
+        <h1>Travel + Weather + Sun + Sea</h1>
+        <br />
         <ul className="navigation-items">
           <li className="navigation-item">
-            <Link to="/">Lisbon</Link>
+            <Link to="/">Sun & Sea</Link>
           </li>
           <li className="navigation-item">
-            <Link to="/paris">Paris</Link>
+            <Link to="/munich">Family & Snow</Link>
           </li>
           <li className="navigation-item">
-            <Link to="/sydney">Sydney</Link>
-          </li>
-          <li className="navigation-item">
-            <Link to="/san-francisco">San Francisco</Link>
+            <Link to="/venice">Love & Art</Link>
           </li>
         </ul>
       </header>

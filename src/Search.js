@@ -22,7 +22,7 @@ export default class Search extends Component {
       <form className="float-left" onClick={event => this._submit(event)}>
         <input
           type="text"
-          placeholder="Enter a city"
+          placeholder="Choose your next location!"
           autoComplete="off"
           autoFocus="on"
           onChange={event => this._handleChange(event)}

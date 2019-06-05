@@ -85,7 +85,7 @@ export default class Weather extends Component {
                   </div>
                 </div>
               </div>
-              <div className="col-sm-6">
+              <div className="col-sm-4">
                 <div className="weather-detail__text">
                   Precipitation: {this.state.weather.precipitation}
                 </div>
